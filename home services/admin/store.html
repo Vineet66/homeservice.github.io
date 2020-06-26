@@ -1,0 +1,52 @@
+
+    <div class="container" style="margin-left:200px;">
+        <h3>customer applcation data</h3><br>
+ <table class="table table-striped">
+    <thead>
+        <tr>
+        <th>id</th>
+            <th>name</th>
+            <th>number</th>
+            <th>city</th>
+            <th>service</th>
+            <th>address</th>
+            <th>datetime</th>
+            <th>success</th>
+            <th>pending</th>
+            <th>cancel</th>
+            
+            
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            
+           include 'connection.php'; 
+            $selectquery ="select * from app";
+            $query = mysqli_query($con,$selectquery);
+            
+            
+            
+            while($res = mysqli_fetch_array($query)){
+                ?>
+                <tr>
+    <td style="pl-20px;"><?php echo $res['id']; ?></td>
+    <td><?php echo $res['name']; ?></td>
+    <td><?php echo $res['number']; ?></td>
+    <td><?php echo $res['city']; ?></td>
+    <td><?php echo $res['service']; ?></td>
+    <td><?php echo $res['address']; ?></td>
+    <td><?php echo $res['datetime']; ?></td>
+    <td><a href="update.php?id=<?php echo $res['id']; ?>">success</a></td>
+    <td><a href="delete.php?idth=<?php echo $res['id']; ?>">pending</a></td>
+    <td><a href="delete.php?idth=<?php echo $res['id']; ?>">cancel</a></td>
+    </tr><?php
+                
+     }
+?>
+                
+    </tbody>
+        
+        </table>
+
+</div>
